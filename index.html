@@ -19,7 +19,15 @@
 			</div>
 			<div>Total Numeric value of person's name is: {{totalValue}}</div>
 			<br>
-			Here is the name also {{name}}
+			Here is the name also {{name + " DEBUG"}}
+<br><br>
+			{{name}}'s sessage is: <br><br>
+			{{sayMassage()}} so says {{name}}
+			<div>
+				<button ng-click="feedYaakov()">Feed Yaakov</button>
+				<br>
+				<img ng-src="images/yaakov_{{stateOfBeing}}.png">
+			</div>	
 		</div>
 	</body>
 </html>	
