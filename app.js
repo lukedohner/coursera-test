@@ -3,7 +3,7 @@
 
 angular.module("NameCalculator", [])
 
-.controller('NameCalculatorControler', function ($scope){
+.controller('NameCalculatorControler', function ($scope, $filter){
 $scope.name = "";
 $scope.totalValue = 0;
 
@@ -17,9 +17,13 @@ function calculatNumericForString(string) {
 	for (var i =  0; i < string.length; i++){
 		totalStringValue += string.charCodeAt(i);
 	}
-
 	return totalStringValue;
 }
+$scope.upper = function () {
+	var upCase = $filter('uppercase');
+	$scope.name = upCase($scope.name);
+     console.log("$scope.upper");
+};
 
 });
 
