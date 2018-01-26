@@ -19,8 +19,8 @@ function LunchCheckController($scope) {
     var comma = ",";
     var myColor = "white";
 	splitString ($scope.lunchList, comma);
-
   };
+  
   $scope.SetStyle = function () {
             $scope.CustomStyle = {
              'background-color': $scope.BColor,
@@ -43,7 +43,6 @@ function splitString(stringToSplit, separator) {
     $scope.Color = "Red";
     $scope.ColorBorder = "Red";
     $scope.SetStyle();
-
 	} else if (listLength <= 3) {
     $scope.lunchMess = "Enjoy!";
     $scope.BColor = "White";
@@ -58,7 +57,7 @@ function splitString(stringToSplit, separator) {
     $scope.SetStyle();
 	}
 	console.log('The original string is: "' + stringToSplit + '"');
-  console.log('The separator is: "' + separator + '"');
+  console.log('The separator is: "' + separator + '"'); 
   console.log('The array has ' + arrayOfStrings.length + ' elements: ' + arrayOfStrings.join(' / '));
 	
 	
