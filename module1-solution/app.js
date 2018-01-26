@@ -1,21 +1,37 @@
 (function () {
-'use strict';
+	"use strict";
 
-angular.module('LunchCheck', [])
-.controller('LunchCheckController', LunchCheckController);
+	angular.module("LunchCheck", [])
+	.controller("LunchCheckController", LunchCheckController);
 
-LunchCheckController.$inject = ['$scope'];
+LunchCheckController.$inject = ["$scope"];
 function LunchCheckController($scope) {
   $scope.name = "Yaakov";
-  $scope.stateOfBeing = "hungry";
+  $scope.lunchList = "";
+  $scope.lunchMess = "";
 
   $scope.sayMessage = function () {
-    return "Yaakov likes to eat healthy snacks at night!";
+	var space = " ";
+    var comma = ",";
+	splitString ($scope.lunchList, comma);
   };
+function splitString(stringToSplit, separator) {
+	//console.log("Lunch list " + $scope.lunchList);
+	var arrayOfStrings = stringToSplit.split(separator);
+	var listLength = arrayOfStrings.length;
 
-  $scope.feedYaakov = function () {
-    $scope.stateOfBeing = "fed";
-  };
+	if (listLength === 1) {
+    $scope.lunchMess = "Please enter data first";
+	} else if (listLength <= 3) {
+    $scope.lunchMess = "Enjoy!";
+	} else if (listLength > 3) {
+    $scope.lunchMess = "Too Much!";
+	}
+	/*
+	console.log("The original string is: "" + stringToSplit + """);
+	console.log("The separator is: "" + separator + """);
+	console.log("The array has " + arrayOfStrings.length + " elements: " + arrayOfStrings.join(" / "));
+	*/
 }
-
+}
 })();
