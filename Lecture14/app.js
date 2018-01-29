@@ -1,45 +1,45 @@
 (function () {
 'use strict';
 
-angular.module('CounterApp', [])
-.controller('CounterController', CounterController);
+var shoppingList1 = ["Milk", "Donuts", "Cookies", "Chocolate", "Peanut Butter", "Peto Bismol",
+"Pepto Bismol(Cocolate flavor)", "Pepto Bismol(Cookie flavor)"
+];
 
-CounterController.$inject = ['$scope', '$timeout'];
-function CounterController($scope, $timeout) {
-  $scope.onceCounter = 0;
-  $scope.counter = 0;
-  $scope.name = "Yaakov";
-
-  $scope.showNumberOfWatchers = function () {
-    console.log($scope);
-    console.log("# of Watchers: ", $scope.$$watchersCount);
-  };
-
-  $scope.countOnce = function () {
-    $scope.onceCounter = 1;
-  };
-$scope.upCounter = function () {
-  $timeout( function(){
-    $scope.counter++;
-     console.log("upCounter fired");
-  }, 2000);
-};
-
-  // $scope.upCounter = function () {
-  //     setTimeout (function (){
-  //     $scope.counter++;
-  //     console.log("upCounter fired");
-  //     $scope.$digest();
-  //     }, 2000);
-  // };
-
-  // $scope.$watch ( function () {
-  //   console.log("Digest Loop Fired!");
-  // });
+var shoppingList2 = [
+{
+  name: "Milk",
+  quantity: "2"
+},
+{
+  name: "Donuts",
+  quantity: "200"
+},
+{
+  name: "Cookies",
+  quantity: "300"
+},
+{
+  name: "Chocolate",
+  quantity: "5"
 }
-  // $scope.$watch('onceCounter', function (newValue, oldValue) {
-  //   console.log("onceCounter old value: ", oldValue);
-  //   console.log("onceCounter new value: ", newValue);
-  // });
-  //
+];
+
+
+angular.module('ShoppingListApp', [])
+.controller('ShoppingListController', ShoppingListController);
+
+ShoppingListController.$inject = ['$scope'];
+function ShoppingListController($scope) {
+  $scope.shoppingList1 = shoppingList1;
+  $scope.shoppingList2 = shoppingList2;
+
+  $scope.addToList  = function(){
+   var newItem = {
+    name: $scope.newItemName,
+    quantity: $scope.newItemQuantity
+   };
+   $scope.shoppingList2.push(newItem);
+  };
+}
+
 })();
