@@ -1,27 +1,42 @@
 <!DOCTYPE html>
-<html ng-app='ShoppingListApp'>
+<html ng-app='ControllerAsApp'>
   <head>
     <meta charset="utf-8">
     <script src="angular.min.js"></script>
     <script src="app.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css">
     <style> body { font-size: 1.2em; }</style>
     <title>Custom Service</title>
   </head>
   <body>
-    <h1>Custom Service</h1>
-    <div ng-controller='ShoppingListAddController as itemAdder'>
-      <input type = "text" ng-model="itemAdder.itemName" placeholder = "item name">
-      <input type = "text" ng-model="itemAdder.itemQuantity" placeholder = "quantity">
-      <button ng-click = "itemAdder.addItem();">Add Item to Shopping List</button>
+    <h1>Custom Service through Factory</h1>
+
+    <!--LIST #1 - unlisted items -->
+    <div id = "list1" ng-controler='ShoppingListControler1 as list1'>
+      <h3>Shoping List</h3>
+      <input type="text" ng-model="list1.itemName" placeholder="item name">
+      <input type="text" ng-model="list1.itemQuantity" placeholder="quantity">
+      <button ng-click="list1.addItem();">Add Item</button>
+      <ol>
+        <li ng-repeat "item in list1.items">
+          {{ item.quantity }} of {{ item.name }}
+          <button ng-click="list1.removeItem($index);">Remove Item</button>
+        </li> 
+      </ol>   
     </div>
 
-   <div ng-controller='ShoppingListShowController as showList'>
+   <!-- LIST #2 (limited to 3 items) -->
+   <div id = "list2" ng-controler='ShoppingListControler2 as list2'>
+      <h3>Shoping List #2 (limited to 3 items)</h3>
+      <input type="text" ng-model="list2.itemName" placeholder="item name">
+      <input type="text" ng-model="list2.itemQuantity" placeholder="quantity">
+      <button ng-click="list2.addItem();">Add Item</button>
       <ol>
-        <li ng-repeat = "item in showList.items">
+        <li ng-repeat "item in list2.items">
           {{ item.quantity }} of {{ item.name }}
-          <button ng-click = "showList.removeItem($index);" >Remove This</button>
-        </li>  
-      </ol>
-   </div>
+          <button ng-click="list2.removeItem($index);">Remove Item</button>
+        </li> 
+      </ol>   
+    </div>
   </body>
 </html>
