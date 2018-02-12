@@ -99,7 +99,7 @@ function ShoppingListCheckOffService() {
 ];
 
 var boughtitems = [];
-//var boughtitems = [{name: "duh",quantity: 0}];
+var boughtitems = [{name: "crabs",quantity: 0}];
 
   var maxItems = 50;
   //service.addItem = function (itemName, quantity) {

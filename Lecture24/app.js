@@ -55,7 +55,7 @@ function ShoppingListService($q, WeightLossFilterService) {
 
   // service.addItem = function (name, quantity) {
   //   var promise = WeightLossFilterService.checkName(name);
-  //
+  
   //   promise
   //   .then(function (response) {
   //     return WeightLossFilterService.checkQuantity(quantity);
@@ -114,13 +114,13 @@ function WeightLossFilterService($q, $timeout) {
     $timeout(function () {
       // Check for cookies
       if (name.toLowerCase().indexOf('cookie') === -1) {
-        deferred.resolve(result)
+        deferred.resolve(result);
       }
       else {
         result.message = "Stay away from cookies, Yaakov!";
         deferred.reject(result);
       }
-    }, 3000);
+    }, 300);
 
     return deferred.promise;
   };
@@ -141,7 +141,7 @@ function WeightLossFilterService($q, $timeout) {
         result.message = "That's too much, Yaakov!";
         deferred.reject(result);
       }
-    }, 1000);
+    }, 100);
 
     return deferred.promise;
   };
