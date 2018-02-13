@@ -28,7 +28,7 @@ function MenuCategoriesController(MenuCategoriesService) {
     })
     .catch(function (error) {
       console.log(error);
-    })
+    });
   };
 
 }
